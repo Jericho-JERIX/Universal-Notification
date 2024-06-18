@@ -22,6 +22,7 @@ export function NotionSubscriptionPlanEmbed({
         name: "Notion: Subscription Plan Notification",
         url: `https://www.notion.so/${databaseId}`,
     })
+    .setColor("White")
     .setTitle(title)
     .setURL(url)
     .setDescription(`**Renewal Date:** ${formattedRenewalDate} *(${dayLeft} days left)*`)
