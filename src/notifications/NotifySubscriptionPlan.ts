@@ -50,9 +50,9 @@ export async function notifySubscriptionPlan():Promise<EmbedBuilder[]> {
     
     const embeds:EmbedBuilder[] = []
     for (const { dayLeft, subscription, renewalDate } of dayCountdowns) {
-        if ([1,3,7].includes(dayLeft)) {
+        if ([0,1,3,7].includes(dayLeft)) {
             embeds.push(NotionSubscriptionPlanEmbed({
-                url: `https://www.notion.so/${subscription.id}`,
+                url: subscription.url,
                 title: getSubscriptionTitle(subscription) as string,
                 renewalDate: renewalDate,
                 dayLeft
