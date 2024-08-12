@@ -36,5 +36,5 @@ export async function triggerDailyUpdate(client: Client) {
 		setInterval(async () => {
 			await executeAllJobs(client)
 		}, 86400000);
-	}, 1);
+	}, beforeMidnight);
 }
