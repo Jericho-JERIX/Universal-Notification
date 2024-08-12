@@ -24,7 +24,7 @@ export async function triggerDailyUpdate(client: Client) {
 	tomorrow.setDate(tomorrow.getDate() + 1);
 	tomorrow.setHours(0, 1, 0, 0);
 
-	const beforeMidnight = tomorrow.getTime() - Date.now();
+	const beforeMidnight = tomorrow.getTime() - Date.now() + Number(process.env.DAILY_UPDATE_OFFSET_MILLISECONDS);
 
 	console.log(
 		`✅ Daily update activated (will be triggered in ${
@@ -36,5 +36,5 @@ export async function triggerDailyUpdate(client: Client) {
 		setInterval(async () => {
 			await executeAllJobs(client)
 		}, 86400000);
-	}, beforeMidnight);
+	}, 1);
 }
