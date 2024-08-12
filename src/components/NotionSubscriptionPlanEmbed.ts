@@ -2,6 +2,13 @@ import { EmbedBuilder } from "discord.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+const DayLeftString:Record<number,string> = {
+    0: "Today �",
+    1: "1 day left 🟡",
+    7: "Next Week"
+}
+
 export function NotionSubscriptionPlanEmbed({
     url,
     title,
@@ -25,5 +32,5 @@ export function NotionSubscriptionPlanEmbed({
     .setColor("White")
     .setTitle(title)
     .setURL(url)
-    .setDescription(`**Renewal Date:** ${formattedRenewalDate} *(${dayLeft} days left)*`)
+    .setDescription(`**Renewal Date:** ${formattedRenewalDate} (${DayLeftString[dayLeft]})`)
 }

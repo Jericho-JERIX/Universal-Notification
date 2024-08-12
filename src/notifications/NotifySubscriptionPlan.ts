@@ -42,7 +42,7 @@ export async function notifySubscriptionPlan():Promise<EmbedBuilder[]> {
         const renewalDate = getSubscriptionDate(subscriptionPlan as PageObjectResponse) as Date;
         const nextRenewalDate = getNextRenewalDate(renewalDate)
         return {
-            dayLeft: Math.ceil(getNextRenewalCountdown(renewalDate) / 86400000),
+            dayLeft: Math.floor(getNextRenewalCountdown(renewalDate) / 86400000),
             subscription: subscriptionPlan as PageObjectResponse,
             renewalDate: nextRenewalDate
         }
@@ -50,7 +50,7 @@ export async function notifySubscriptionPlan():Promise<EmbedBuilder[]> {
     
     const embeds:EmbedBuilder[] = []
     for (const { dayLeft, subscription, renewalDate } of dayCountdowns) {
-        if ([0,1,3,7].includes(dayLeft)) {
+        if ([0,1,7].includes(dayLeft)) {
             embeds.push(NotionSubscriptionPlanEmbed({
                 url: subscription.url,
                 title: getSubscriptionTitle(subscription) as string,
