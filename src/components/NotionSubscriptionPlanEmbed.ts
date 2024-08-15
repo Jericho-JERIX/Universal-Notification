@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const DayLeftString:Record<number,string> = {
-    0: "Today �",
-    1: "1 day left 🟡",
+    0: "Today!",
+    1: "Tomorrow",
     7: "Next Week"
 }
 
